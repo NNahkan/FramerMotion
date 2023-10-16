@@ -1,19 +1,28 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { buttonVariants, containerVariants } from "../variants";
+import Loader from "./Loader";
 
+ 
 const Home = () => {
   return (
-    <div className="home container">
-      <h2>
-        Welcome to Pizza Joint
-      </h2>
+    <motion.div
+      className="home container"
+		variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+    >
+      <h2>Welcome to Pizza Joint</h2>
       <Link to="/base">
-        <button>
+        <motion.button variants={buttonVariants} whileHover="hover">
           Create Your Pizza
-        </button>
+        </motion.button>
       </Link>
-    </div>
-  )
-}
+		<Loader/>
+    </motion.div>
+  );
+};
 
 export default Home;
